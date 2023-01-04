@@ -1,7 +1,6 @@
 import 'package:get_it/get_it.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:weight_app/Controller/auth_controller.dart';
-import 'package:weight_app/Controller/weight_controller.dart';
+import 'package:weight_app/provider/auth_controller.dart';
+import 'package:weight_app/provider/weight_controller.dart';
 import 'package:weight_app/repo/auth_repo.dart';
 import 'package:weight_app/repo/weight_repo.dart';
 
@@ -20,6 +19,4 @@ init() async {
 
 
 
-  final sharedPreferences = await SharedPreferences.getInstance();
-  sl.registerLazySingleton(() => sharedPreferences);
 }

@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:weight_app/main.dart';
 import '../presentation/base/custom_snackbar.dart';
 import '../repo/weight_repo.dart';
 
@@ -42,10 +43,12 @@ class WeightController extends ChangeNotifier {
         await weightRepo.deleteWeight( docRef: docRef);
     response.fold((fail) {
       log("fail");
-       // showCustomSnackBar(message: "fail when delete weight", context: cont, isError: true);
+       showCustomSnackBar(message: "fail when delete weight",
+           context: MyApp.navigatorKey.currentState?.context, isError: true);
     }, (success) {
       log("success");
-       // showCustomSnackBar(message: "Weight deleted", context: cont);
+        showCustomSnackBar(message: "Weight deleted",
+          context:  MyApp.navigatorKey.currentState?.context,);
     });
   }
 

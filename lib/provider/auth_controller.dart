@@ -78,7 +78,9 @@ class AuthController extends ChangeNotifier {
   }
 
   logOut() async {
+
     await authRepo.logOut();
+
     MyApp.navigatorKey.currentState!.pushAndRemoveUntil(
         MaterialPageRoute(
             builder: (BuildContext context) => const SignInScreen()),

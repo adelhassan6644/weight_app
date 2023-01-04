@@ -1,8 +1,9 @@
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
-import '../data/model/weight_model.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import '../presentation/base/custom_snackbar.dart';
 import '../repo/weight_repo.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class WeightController extends ChangeNotifier {
   WeightRepo weightRepo;
@@ -14,12 +15,12 @@ class WeightController extends ChangeNotifier {
 
   bool isBottomSheet = false ;
 
-  Stream<List<WeightModel>> getWeight() {
+  Query getWeight() {
     return weightRepo.getWeightData();
   }
 
   addWeight({required double weight, cont}) async {
-    final response = await weightRepo.addWeight(weight: weight);
+    final response = await weightRepo.addWeight(weight: weight,);
     response.fold((fail) {
       showCustomSnackBar(message: fail, context: cont, isError: true);
     }, (success) {

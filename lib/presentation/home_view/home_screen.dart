@@ -1,27 +1,33 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:weight_app/data/model/weight_model.dart';
-import 'package:weight_app/utill/media_query_values.dart';
 import 'package:provider/provider.dart';
 import '../../provider/auth_controller.dart';
 import '../../provider/weight_controller.dart';
 import '../../utill/color_resources.dart';
-import '../../utill/dimensions..dart';
 import '../base/bottom_sheet.dart';
 import '../base/custom_app_bar.dart';
-import '../base/no_data_screen.dart';
+import 'package:paginate_firestore/paginate_firestore.dart';
+import 'home_widget/weight_item.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-class HomeScreen extends StatelessWidget {
+
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  // PaginateRefreshedChangeListener refreshChangeListener = PaginateRefreshedChangeListener();
+  @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: CustomAppBar(
-        leadingAction: () {
-          Provider.of<AuthController>(context, listen: false).logOut();
-        },
-        title: "Home Page",
+        leadingAction: () {Provider.of<AuthController>(context, listen: false).logOut();},
+        title: "Home Screen",
         showLeading: true,
       ),
       floatingActionButton: Consumer<WeightController>(builder: ((context, weightController, child) {
@@ -45,7 +51,20 @@ class HomeScreen extends StatelessWidget {
               });
             });
       })),
-      body: StreamBuilder<List<WeightModel>>(
+      body: PaginateFirestore(
+        //item builder type is compulsory.
+        itemBuilder: (context, documentSnapshots, index) {
+          WeightModel weightData =
+          WeightModel.fromJson( documentSnapshots[index].data()! as Map<String, dynamic>,documentSnapshots[index].id);
+          return WeightItem(data: weightData);
+        },
+        query: Provider.of<WeightController>(context, listen: false).getWeight(),
+        itemsPerPage: 5,
+        itemBuilderType: PaginateBuilderType.listView,
+        isLive: true,
+      ),
+
+     /* StreamBuilder<List<WeightModel>>(
         stream: Provider.of<WeightController>(context, listen: false).getWeight(),
         builder: (BuildContext context, snapshot) {
           if (snapshot.hasError) {
@@ -129,7 +148,7 @@ class HomeScreen extends StatelessWidget {
             ),
           );
         },
-      ),
+      ),*/
     );
   }
 }

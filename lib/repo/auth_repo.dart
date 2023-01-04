@@ -34,5 +34,6 @@ class AuthRepo {
 }
 
 
-Future logOut()=>fireBaseAuth.signOut();
+Future logOut() async {
+    await fireBaseAuth.signOut();}
 }

@@ -74,7 +74,8 @@ class _AddBottomSheetState extends State<AddBottomSheet> {
                           FocusScope.of(context).unfocus();
                           widget.isEdit?
                           await  weightController.editWeight(weight:double.parse( _editWeightController.text.trim()),cont: context,docRef:widget.id.toString()):
-                          await  weightController.addWeight(weight:double.parse( _addWeightController.text.trim()),cont: context);
+                          await  weightController.addWeight(
+                              weight:double.parse( _addWeightController.text.trim()),cont: context);
 
                           Navigator.of(context).pop();
                            weightController.nonBottomSheetMode();

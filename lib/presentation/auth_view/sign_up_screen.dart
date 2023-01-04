@@ -76,10 +76,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
               Consumer<AuthController>(
                   builder: (k,authController,child) {
                     if (authController.isSignUp == true)
-                    {return const SizedBox(
-                          height: 30,
-                          width: 30,
-                          child: CircularProgressIndicator());
+                    {return const Center(
+                      child: SizedBox(
+                            height: 30,
+                            width: 30,
+                            child: CircularProgressIndicator()),
+                    );
                     }else {
                       return Padding(
                         padding: const EdgeInsets.symmetric(vertical: 10.0),

@@ -12,9 +12,7 @@ import 'di.dart' as di;
 Future<void> main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
-
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform,);
-
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarBrightness: Brightness.light,
       statusBarColor: Colors.transparent));

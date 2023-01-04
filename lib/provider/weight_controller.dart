@@ -45,7 +45,6 @@ class WeightController extends ChangeNotifier {
       log("fail");
     }, (success) {
       log("success");
-
     });
   }
 

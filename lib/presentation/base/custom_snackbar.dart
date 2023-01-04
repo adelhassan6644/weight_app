@@ -9,7 +9,7 @@ void showCustomSnackBar(  {required String message ,context,bool isError = false
       fullWidth: true,
       textPadding:const EdgeInsets.symmetric(vertical: 20,) ,
       borderRadius: const BorderRadius.all(Radius.circular(15)),
-      backgroundColor: isError ? Colors.red : ColorResources.primary,
+      backgroundColor: isError ? Colors.red : ColorResources.goldColor,
       animation: StyledToastAnimation.slideFromLeft,
       reverseAnimation: StyledToastAnimation.slideFromRight,
       position: StyledToastPosition.top,

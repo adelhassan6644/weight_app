@@ -1,9 +1,7 @@
-import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../presentation/base/custom_snackbar.dart';
 import '../repo/weight_repo.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class WeightController extends ChangeNotifier {
   WeightRepo weightRepo;

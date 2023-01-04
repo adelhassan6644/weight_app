@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? title;
   final bool? showLeading ;
+  final IconData? leadingIcon;
   final void Function()? leadingAction ;
 
-  const CustomAppBar( {Key? key,  this.title , this.leadingAction, this.showLeading = false}) : super(key: key);
+  const CustomAppBar( {Key? key,  this.title ,  this.leadingIcon  , this.leadingAction, this.showLeading = false}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,12 +27,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           onTap: leadingAction ?? () {
             Navigator.pop(context);
             },
-          child: const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 5),
+          child:  Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 5),
             child: SizedBox(
               width: 60,
               height: 60,
-              child: Icon(Icons.arrow_back)
+              child: Icon( leadingIcon ?? Icons.arrow_back)
             ),
           ),
         ),

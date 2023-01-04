@@ -7,7 +7,7 @@ import '../../../provider/weight_controller.dart';
 import '../../../utill/color_resources.dart';
 import '../../../utill/dimensions..dart';
 import '../../base/bottom_sheet.dart';
-
+import 'package:weight_app/utill/extensions.dart';
 class WeightItem extends StatelessWidget {
 
   final  WeightModel data ;
@@ -68,7 +68,7 @@ class WeightItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                      "Created at : ${data.createdAt.toString()}"),
+                      "Created at : ${data.createdAt?.dateTimeFormat()}"),
                   IconButton(
                       onPressed: () async {
                         Provider.of<WeightController>(context,

@@ -80,10 +80,6 @@ class _AddBottomSheetState extends State<AddBottomSheet> {
                           Navigator.of(context).pop();
                            weightController.nonBottomSheetMode();
                           formKey.currentState!.save();
-                          // Future.delayed(const Duration(seconds: 1),
-                          //         () async { Navigator.of(context)..pop()..pop();
-                          //        });
-                          // await customDialog(context, "Successfully Added !");
                         }
                       },
                       child: Container(

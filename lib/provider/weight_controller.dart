@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../presentation/base/custom_snackbar.dart';
@@ -31,18 +32,20 @@ class WeightController extends ChangeNotifier {
         await weightRepo.editWeight(weight: weight, docRef: docRef);
     response.fold((fail) {
       showCustomSnackBar(message: fail, context: cont, isError: true);
-    }, (sucess) {
+    }, (success) {
       showCustomSnackBar(message: "Weight Updated", context: cont);
     });
   }
 
-  deleteWeight({required docRef, cont}) async {
+  deleteWeight({required docRef}) async {
     final response =
         await weightRepo.deleteWeight( docRef: docRef);
     response.fold((fail) {
-      showCustomSnackBar(message: fail, context: cont, isError: true);
-    }, (sucess) {
-      showCustomSnackBar(message: "Weight deleted", context: cont);
+      log("fail");
+       // showCustomSnackBar(message: "fail when delete weight", context: cont, isError: true);
+    }, (success) {
+      log("success");
+       // showCustomSnackBar(message: "Weight deleted", context: cont);
     });
   }
 

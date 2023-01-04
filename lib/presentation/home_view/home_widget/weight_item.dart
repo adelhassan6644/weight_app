@@ -73,9 +73,7 @@ class WeightItem extends StatelessWidget {
                       onPressed: () async {
                         Provider.of<WeightController>(context,
                             listen: false)
-                            .deleteWeight(
-                            cont: context,
-                            docRef: data.id);
+                            .deleteWeight(docRef: data.id);
                       },
                       icon: const Icon(
                         Icons.delete,

@@ -43,12 +43,9 @@ class WeightController extends ChangeNotifier {
         await weightRepo.deleteWeight( docRef: docRef);
     response.fold((fail) {
       log("fail");
-       showCustomSnackBar(message: "fail when delete weight",
-           context: MyApp.navigatorKey.currentState?.context, isError: true);
     }, (success) {
       log("success");
-        showCustomSnackBar(message: "Weight deleted",
-          context:  MyApp.navigatorKey.currentState?.context,);
+
     });
   }
 

@@ -37,7 +37,7 @@ class WeightRepo {
     });
   }
 
-  Future<Either<dynamic,dynamic>>   deleteWeight({required String docRef}) async {
+  Future<Either<dynamic,dynamic>> deleteWeight({required String docRef}) async {
     log(docRef);
     return   await collectionRef.doc(docRef).delete().then((value) {
       return Right(value);
